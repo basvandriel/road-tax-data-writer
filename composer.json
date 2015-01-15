@@ -1,0 +1,24 @@
+{
+  "name": "BAS/roadTaxDataParser",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "phpunit/phpunit": "4.4.1"
+  }
+
+  "autoload": {
+    "psr-4": {
+      "Bas\\": [
+        "src/parser",
+        "test/Bas"
+      ]
+    }
+  }
+}
