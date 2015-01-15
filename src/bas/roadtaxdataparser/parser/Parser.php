@@ -37,7 +37,7 @@
             $formattedDataArrays = [];
             foreach ($formatterClasses as $formatterClass) {
                 $reflectedClass = new \ReflectionClass($formatterClass);
-                if ($reflectedClass->isInstantiable() && $reflectedClass->isSubclassOf($this->getNamespace() . "\\formater\\FormatterInterface.php")) {
+                if ($reflectedClass->isInstantiable() && $reflectedClass->isSubclassOf($this->getNamespace() . "\\Formatter\\Formatter.php")) {
                     $formattedDataArrays[] = $reflectedClass->newInstance()
                                                             ->format($this->getData());
                 }
