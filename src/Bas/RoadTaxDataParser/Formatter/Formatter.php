@@ -9,5 +9,10 @@
      */
     interface Formatter
     {
-        public function format();
+        /**
+         * @param array $data The data which is getting formatted
+         *
+         * @return mixed
+         */
+        public function format(array $data);
     }

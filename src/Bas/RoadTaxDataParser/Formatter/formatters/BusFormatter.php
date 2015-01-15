@@ -6,7 +6,19 @@
 
     class BusFormatter implements Formatter
     {
-        public function format() {
-            //...
+        /**
+         * @param array $data The data which is getting formatted
+         *
+         * @return mixed
+         */
+        public function format(array $data) {
+            // TODO: Implement format() method.
+            $data = $data->dataAutobus;
+
+            $formatted = [];
+
+            for ($dataIndex = 0; $dataIndex < count($data); $dataIndex++) {
+
+            }
         }
     }
