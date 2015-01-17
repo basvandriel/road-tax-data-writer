@@ -28,16 +28,19 @@
     interface Formatter
     {
         /**
-         * @param array $resolvedData The data which is getting formatted
+         * @param $resolvedData array The resolved data The data resolved for this vehicle type as an single array or
+         *                      data-map which is getting formatted
+         *
+         * @throws \HttpRequestException When it cant find the data
          *
          * @return array
          */
         public function format(array $resolvedData);
 
         /**
-         * @param array $data
+         * @param $data array All the non-formatted data
          *
-         * @return array
+         * @return $data array The data resolved for this vehicle type as an single array or data-map
          */
         public function resolveData(array $data);
     }
