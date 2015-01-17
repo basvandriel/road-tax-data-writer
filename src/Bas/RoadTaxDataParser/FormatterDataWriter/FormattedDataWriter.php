@@ -1,5 +1,6 @@
 <?php
 
+
     /*!
      * The MIT License (MIT)
      *
@@ -18,26 +19,39 @@
      * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
      * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      */
-    namespace Bas\RoadTaxDataParser\Formatter;
+    namespace Bas\RoadTaxDataParser\FormatterDataWriter;
+
 
     /**
-     * Interface Formatter
+     * Writes formatted data to php files in array format
      *
-     * @package Bas\RoadTaxDataParser\Formatter\
+     * @package Bas\RoadTaxDataParser\FormattedDataWriter
      */
-    interface Formatter
+    class FormattedDataWriter
     {
         /**
-         * @param array $resolvedData The data which is getting formatted
-         *
-         * @return array
+         * @var $formattedData array The formatted data with it's file name
          */
-        public function format(array $resolvedData);
+        private $formattedData;
 
         /**
-         * @param array $data
+         * Instantiates a new FormattedDataWriter
          *
-         * @return array
+         * @param $formattedData   array The formatted data with it's file name
          */
-        public function resolveData(array $data);
+        public function __construct(array $formattedData) {
+            $this->formattedData = $formattedData;
+        }
+
+        /**
+         * Saves the formatted data to the specified output directory in it's given filename
+         *
+         * @param $outputDirectory string The location where the files are getting stored
+         */
+        public function saveFiles($outputDirectory) {
+            foreach ($this->formattedData as $fileName => $formattedDataRow) {
+                $array = var_export($formattedDataRow, true);
+                file_put_contents("{$outputDirectory}\\{$fileName}.php", "<?php\n\n return {$array};");
+            }
+        }
     }

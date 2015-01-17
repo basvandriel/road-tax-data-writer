@@ -1,24 +1,44 @@
 <?php
 
+    /**
+     *
+     */
     namespace Bas\RoadTaxDataParser\Formatter\Formatters;
 
+    /**
+     *
+     */
     use Bas\RoadTaxDataParser\Formatter\Formatter;
 
+    /**
+     * Class BusFormatter
+     *
+     * @package Bas\RoadTaxDataParser\Formatter\Formatters
+     */
     class BusFormatter implements Formatter
     {
         /**
-         * @param array $data The data which is getting formatted
+         * @param array $resolvedResolvedData
          *
-         * @return mixed
+         * @return array
          */
-        public function format(array $data) {
-            // TODO: Implement format() method.
-            $data = $data->dataAutobus;
-
+        public function format(array $resolvedResolvedData) {
             $formatted = [];
-
-            for ($dataIndex = 0; $dataIndex < count($data); $dataIndex++) {
-
+            for ($i = 0; $i < count($resolvedResolvedData); $i++) {
+                $formatted[(int)$resolvedResolvedData[$i][0]] = [
+                    'quarterly' => (int)$resolvedResolvedData[$i][1],
+                    'yearly'    => (int)$resolvedResolvedData[$i][2]
+                ];
             }
+            return $formatted;
+        }
+
+        /**
+         * @param array $data
+         *
+         * @return array
+         */
+        public function resolveData(array $data) {
+            return $data['dataAutobus'];
         }
     }

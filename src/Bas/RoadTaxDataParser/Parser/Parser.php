@@ -1,9 +1,29 @@
 <?php
 
+    /*!
+     * The MIT License (MIT)
+     *
+     * Copyright (c) 2014 Bas van Driel
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+     * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+     * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+     * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+     * Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+     * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+     * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+     * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+     */
+    namespace Bas\RoadTaxDataParser\Parser;
+
     /**
      *
      */
-    namespace Bas\RoadTaxDataParser\Parser;
+    use Bas\RoadTaxDataParser\Formatter\Formatter;
 
     /**
      * Class Parser
@@ -35,11 +55,24 @@
          */
         public function formatData(array $formatterClasses) {
             $formattedDataArrays = [];
-            foreach ($formatterClasses as $formatterClass) {
+            $data = json_decode(file_get_contents($this->uri));
+
+
+            foreach ($data as $vehicleTypeKey => $values) {
+                for ($i = 0; $i < count($values); $i++) {
+                    $data->{$vehicleTypeKey}[$i] = explode("#", $values[$i]);
+                }
+            }
+
+            foreach ($formatterClasses as $fileName => $formatterClass) {
                 $reflectedClass = new \ReflectionClass($formatterClass);
-                if ($reflectedClass->isInstantiable() && $reflectedClass->isSubclassOf($this->getNamespace() . "\\Formatter\\Formatter.php")) {
-                    $formattedDataArrays[] = $reflectedClass->newInstance()
-                                                            ->format($this->getData());
+                if ($reflectedClass->isInstantiable() && $reflectedClass->isSubclassOf(dirname($this->getNamespace()) . "\\Formatter\\Formatter")) {
+                    /**
+                     * @type Formatter $instance
+                     */
+                    $instance                       = $reflectedClass->newInstance();
+                    $resolvedData                   = $instance->resolveData((array)$data);
+                    $formattedDataArrays[$fileName] = $instance->format($resolvedData);
                 }
             }
             return $formattedDataArrays;
@@ -60,39 +93,19 @@
         }
 
         /**
-         * @return array The JSON file contents in PHP array format
-         */
-        private function getData() {
-            return json_decode(file_get_contents($this->uri));
-        }
-
-        /**
-         * Saves the files based on the formatter classes and it's data
-         *
-         * @param array $formattedDataArrays The formatted data arrays
-         */
-        public function saveFiles(array $formattedDataArrays) {
-            $outputDirectory = dirname($this->uri);
-            foreach ($formattedDataArrays as $fileBaseName => $formattedDataArray) {
-                file_put_contents("{$outputDirectory}\\{$fileBaseName}.php\\",
-                                  "<?php\n\n return " . var_export($formattedDataArray) . ";");
-            }
-        }
-
-        /**
          * Resolves the locations of the formatter classes
          *
          * @return array The locations of the formatter classes with the file name they should use to print out an php
          *               file
          */
         public function locateFormatterClasses() {
-            $inputDirectory   = __DIR__ . "/Formatter";
+            $inputDirectory = __DIR__ . "\\..\\Formatter\\Formatters";
             $formatterClasses = [];
             foreach (new \DirectoryIterator($inputDirectory) as $file) {
                 if ($file->isDot()) {
                     continue;
                 }
-                $formatterClassName                                    = $this->getNamespace() . "\\Formatter\\" . $file->getBasename(".php");
+                $formatterClassName = dirname($this->getNamespace()) . "\\Formatter\\Formatters\\" . $file->getBasename(".php");
                 $formatterClasses[$file->getBasename("Formatter.php")] = $formatterClassName;
             }
             return $formatterClasses;
