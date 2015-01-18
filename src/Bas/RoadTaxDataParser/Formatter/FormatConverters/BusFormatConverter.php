@@ -3,19 +3,17 @@
     /**
      *
      */
-    namespace Bas\RoadTaxDataParser\Formatter\Formatters;
+    namespace Bas\RoadTaxDataParser\Formatter\FormatConverters;
+
+    use Bas\RoadTaxDataParser\Formatter\FormatConverter;
+
 
     /**
+     * Class BusFormatConverter
      *
+     * @package Bas\RoadTaxDataParser\FormatConverters\FormatConverters
      */
-    use Bas\RoadTaxDataParser\Formatter\Formatter;
-
-    /**
-     * Class BusFormatter
-     *
-     * @package Bas\RoadTaxDataParser\Formatter\Formatters
-     */
-    class BusFormatter implements Formatter
+    class BusFormatConverter implements FormatConverter
     {
         /**
          * @param array $resolvedResolvedData

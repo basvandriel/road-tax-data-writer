@@ -1,10 +1,10 @@
 <?php
 
-    namespace Bas\RoadTaxDataParser\Formatter\Formatters;
+    namespace Bas\RoadTaxDataParser\Formatter\FormatConverters;
 
-    use Bas\RoadTaxDataParser\Formatter\Formatter;
+    use Bas\RoadTaxDataParser\Formatter\FormatConverter;
 
-    class PassengerCarFormatter implements Formatter
+    class PassengerCarFormatConverter implements FormatConverter
     {
 
         /**

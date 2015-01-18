@@ -4,20 +4,17 @@
     /**
      *
      */
-    namespace Bas\RoadTaxDataParser\Formatter\Formatters;
+    namespace Bas\RoadTaxDataParser\Formatter\FormatConverters;
 
 
-    /**
-     *
-     */
-    use Bas\RoadTaxDataParser\Formatter\Formatter;
+    use Bas\RoadTaxDataParser\Formatter\FormatConverter;
 
     /**
-     * Class CampingCarFormatter
+     * Class CampingCarFormatConverter
      *
-     * @package Bas\RoadTaxDataParser\Formatter\Formatters
+     * @package Bas\RoadTaxDataParser\FormatConverters\FormatConverters
      */
-    class CampingCarFormatter implements Formatter
+    class CampingCarFormatConverter implements FormatConverter
     {
 
         /**

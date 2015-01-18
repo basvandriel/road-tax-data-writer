@@ -1,6 +1,5 @@
 <?php
 
-
     /*!
      * The MIT License (MIT)
      *
@@ -19,39 +18,31 @@
      * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
      * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      */
-    namespace Bas\RoadTaxDataParser\FormatterDataWriter;
-
+    namespace Bas\RoadTaxDataParser\Formatter;
 
     /**
-     * Writes formatted data to php files in array convertFormat
+     * Interface FormatConverters
      *
-     * @package Bas\RoadTaxDataParser\FormattedDataWriter
+     * @package Bas\RoadTaxDataParser\FormatConverters\
      */
-    class FormattedDataWriter
+    interface FormatConverter
     {
         /**
-         * @var $formattedData array The formatted data with it's file name
+         * @param $resolvedData array The resolved data The data resolved for this vehicle type as an single array or
+         *                      data-map which is getting formatted
+         *
+         * @throws \HttpRequestException When it cant find the data
+         *
+         * @return array
          */
-        private $formattedData;
+        public function format(array $resolvedData);
 
         /**
-         * Instantiates a new FormattedDataWriter
+         * Resolves the data in a data map or single array and returns it.
          *
-         * @param $formattedData   array The formatted data with it's file name
-         */
-        public function __construct(array $formattedData) {
-            $this->formattedData = $formattedData;
-        }
-
-        /**
-         * Saves the formatted data to the specified output directory in it's given filename
+         * @param $data array All the non-formatted data
          *
-         * @param $outputDirectory string The location where the files are getting stored
+         * @return $data array The data resolved for this vehicle type as an single array or data-map
          */
-        public function saveFiles($outputDirectory) {
-            foreach ($this->formattedData as $fileName => $formattedDataRow) {
-                $array = var_export($formattedDataRow, true);
-                file_put_contents("{$outputDirectory}\\{$fileName}", "<?php\n\n return {$array};");
-            }
-        }
+        public function resolveData(array $data);
     }

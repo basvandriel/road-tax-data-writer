@@ -1,46 +1,76 @@
 <?php
 
-    /*!
-     * The MIT License (MIT)
-     *
-     * Copyright (c) 2014 Bas van Driel
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-     * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
-     * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
-     * permit persons to whom the Software is furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
-     * Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-     * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-     * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-     * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-     */
     namespace Bas\RoadTaxDataParser\Formatter;
 
     /**
-     * Interface Formatter
-     *
-     * @package Bas\RoadTaxDataParser\Formatter\
+     * Class FormatConverters
      */
-    interface Formatter
+    class Formatter
     {
         /**
-         * @param $resolvedData array The resolved data The data resolved for this vehicle type as an single array or
-         *                      data-map which is getting formatted
+         * @var array $data The parsed data
+         */
+        private $data;
+
+        /**
+         * Instantiates a new data formatter
          *
-         * @throws \HttpRequestException When it cant find the data
+         * @param array $data The parsed data
+         */
+        public function __construct(array $data) {
+            $this->data = $data;
+        }
+
+        /**
+         * Converts the standard format on every vehicle type based on the format converter classes
+         *
+         * @param array $formatConverterClasses Every located formatter class with it's file name
          *
          * @return array
          */
-        public function format(array $resolvedData);
+        public function convertFormat(array $formatConverterClasses) {
+            $convertedFormatData = [];
+            foreach ($formatConverterClasses as $fileName => $formatConverterClass) {
+                $reflectedFormatConverterClass = new \ReflectionClass($formatConverterClass);
+                if ($reflectedFormatConverterClass->isInstantiable() && $reflectedFormatConverterClass->isSubclassOf(dirname($this->getNamespace()) . "\\Formatter\\FormatConverter")) {
+                    /**
+                     * @type FormatConverter $instance
+                     */
+                    $instance                       = $reflectedFormatConverterClass->newInstance();
+                    $resolvedData                   = $instance->resolveData((array)$this->data);
+                    $convertedFormatData[$fileName] = $instance->format($resolvedData);
+                }
+            }
+            return $convertedFormatData;
+        }
 
         /**
-         * @param $data array All the non-formatted data
-         *
-         * @return $data array The data resolved for this vehicle type as an single array or data-map
+         * @return string The namespace of this file
          */
-        public function resolveData(array $data);
+        private function getNamespace() {
+            return substr($this->getClass(), 0, strrpos($this->getClass(), "\\"));
+        }
+
+        /**
+         * @return string The class name of this class
+         */
+        private function getClass() {
+            return get_class($this);
+        }
+
+        /**
+         * Resolves every location of the format converter classes and put's them in a array with a file name.
+         */
+        public function resolveFormatConverters() {
+            $formatConverterClasses = [];
+            $inputDirectory         = __DIR__ . "\\..\\Formatter\\FormatConverters";
+            foreach (new \DirectoryIterator($inputDirectory) as $file) {
+                if ($file->isDot()) {
+                    continue;
+                }
+                $formatConverterClassName                                           = dirname($this->getNamespace()) . "\\Formatter\\FormatConverters\\" . $file->getBasename(".php");
+                $formatConverterClasses[$file->getBasename("FormatConverters.php")] = $formatConverterClassName;
+            }
+            return $formatConverterClasses;
+        }
     }

@@ -20,10 +20,7 @@
      */
     namespace Bas\RoadTaxDataParser\Parser;
 
-    /**
-     *
-     */
-    use Bas\RoadTaxDataParser\Formatter\Formatter;
+    use Bas\RoadTaxDataParser\FormaterConverter\FormatConverter;
 
     /**
      * Class Parser
@@ -46,6 +43,16 @@
             $this->uri = $uri;
         }
 
+        public function parse() {
+            $data = json_decode(file_get_contents($this->uri));
+            foreach ($data as $vehicleTypeKey => $values) {
+                for ($i = 0; $i < count($values); $i++) {
+                    $data->{$vehicleTypeKey}[$i] = explode("#", $values[$i]);
+                }
+            }
+            return $data;
+        }
+
         /**
          * Formats the data based on all located formatter classes
          *
@@ -66,9 +73,9 @@
 
             foreach ($formatterClasses as $fileName => $formatterClass) {
                 $reflectedClass = new \ReflectionClass($formatterClass);
-                if ($reflectedClass->isInstantiable() && $reflectedClass->isSubclassOf(dirname($this->getNamespace()) . "\\Formatter\\Formatter")) {
+                if ($reflectedClass->isInstantiable() && $reflectedClass->isSubclassOf(dirname($this->getNamespace()) . "\\FormatConverters\\FormatConverters")) {
                     /**
-                     * @type Formatter $instance
+                     * @type FormatConverter $instance
                      */
                     $instance                       = $reflectedClass->newInstance();
                     $resolvedData                   = $instance->resolveData((array)$data);
@@ -99,14 +106,14 @@
          *               file
          */
         public function locateFormatterClasses() {
-            $inputDirectory = __DIR__ . "\\..\\Formatter\\Formatters";
+            $inputDirectory = __DIR__ . "\\..\\FormatConverters\\FormatConverters";
             $formatterClasses = [];
             foreach (new \DirectoryIterator($inputDirectory) as $file) {
                 if ($file->isDot()) {
                     continue;
                 }
-                $formatterClassName = dirname($this->getNamespace()) . "\\Formatter\\Formatters\\" . $file->getBasename(".php");
-                $formatterClasses[$file->getBasename("Formatter.php")] = $formatterClassName;
+                $formatterClassName                                           = dirname($this->getNamespace()) . "\\FormatConverters\\FormatConverters\\" . $file->getBasename(".php");
+                $formatterClasses[$file->getBasename("FormatConverters.php")] = $formatterClassName;
             }
             return $formatterClasses;
         }
