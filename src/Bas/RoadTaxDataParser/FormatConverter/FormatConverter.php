@@ -22,31 +22,31 @@
     namespace Bas\RoadTaxDataParser\FormatConverter;
 
     /**
-     * Interface FormatConverters
+     * Implement this interface to create a format converter class
      *
-     * @package Bas\RoadTaxDataParser\FormatConverters\
+     * @package Bas\RoadTaxDataParser\FormatConverter
      */
     interface FormatConverter
     {
         /**
-         * Converts the format for the inputted (resolved) resolvedData for the specific vehicle type
+         * Converts the format for the inputted (resolved) data for the specific vehicle type and returns it
          *
-         * @param $resolvedData array The resolved resolvedData The resolvedData resolved for this vehicle type as an
-         *                      single array or resolvedData-map which is getting formatted
+         * @param array $resolvedData The resolved data  for this vehicle type as an
+         *                            single array or data-map which is getting formatted
          *
-         * @throws \HttpRequestException When it cant find the resolvedData
+         * @throws \HttpRequestException When it cant find the data in the array
          *
          * @return array The resolvedData which it's format has been converted
          */
         public function convert(array $resolvedData);
 
         /**
-         * Resolves the resolvedData in a resolvedData map or single array and returns it.
+         * Resolves the data for the specific vehicle type and returns it.
          *
-         * @param $data array All the non-formatted resolvedData
+         * @param $data array All the non-formatted data
          *
-         * @return $resolvedData array The resolvedData resolved for this vehicle type as an single array or
-         *                       resolvedData-map
+         * @return $resolvedData array The data resolved for this vehicle type as an single array or
+         *                       data-map
          */
         public function resolveData(array $data);
     }

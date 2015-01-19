@@ -23,7 +23,7 @@
 
 
     /**
-     * Writes formatted data to php files in array convertFormat
+     * Writes formatted data to php files in array format
      *
      * @package Bas\RoadTaxDataParser\FormattedDataWriter
      */
@@ -50,8 +50,8 @@
          */
         public function saveFiles($outputDirectory) {
             foreach ($this->formattedData as $fileName => $formattedDataRow) {
-                $array = var_export($formattedDataRow, true);
-                file_put_contents("{$outputDirectory}\\{$fileName}", "<?php\n\n return {$array};");
+                $data = var_export($formattedDataRow, true);
+                file_put_contents("{$outputDirectory}\\{$fileName}", "<?php\n\n return {$data};");
             }
         }
     }

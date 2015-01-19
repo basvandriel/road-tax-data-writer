@@ -3,7 +3,9 @@
     namespace Bas\RoadTaxDataParser\FormatConverter;
 
     /**
-     * Class FormatConverters
+     * All the utility methods for format converter classes.
+     *
+     * This class takes in the parsed data from the original JSON file and converts the format of it.
      */
     class FormatConverterHandler
     {
@@ -26,7 +28,7 @@
          *
          * @param array $formatConverterClasses Every located formatter class with it's file name
          *
-         * @return array
+         * @return array The data from the converted format data
          */
         public function convertFormat(array $formatConverterClasses) {
             $convertedFormatData = [];
@@ -60,6 +62,8 @@
 
         /**
          * Resolves every location of the format converter classes and put's them in a array with a file name.
+         *
+         * @return array The class names of every format converter class
          */
         public function resolveFormatConverters() {
             $formatConverterClasses = [];
