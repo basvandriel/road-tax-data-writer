@@ -48,12 +48,32 @@
         public function resolveData(array $data) {
             return [
                 true  => array(
-                    'zeeland'       => $data["data_0_ZL"],
-                    'noord_holland' => $data["data_0_NH"]
+                    'noord_holland' => $data["data_1_NH"],
+                    'utrecht'       => $data["data_1_UT"],
+                    'noord_brabant' => $data["data_1_NB"],
+                    'flevoland'     => $data["data_1_FL"],
+                    'limburg'       => $data["data_1_LI"],
+                    'zeeland'       => $data["data_1_ZL"],
+                    'overrijsel'    => $data["data_1_OV"],
+                    'groningen'     => $data["data_1_GR"],
+                    'gelderland'    => $data["data_1_GL"],
+                    'drenthe'       => $data["data_1_DR"],
+                    'friesland'     => $data["data_1_FR"],
+                    'zuid_holland'  => $data["data_1_ZH"],
                 ),
                 false => array(
-                    'zeeland'       => $data["data_1_ZL"],
-                    'noord_holland' => $data["data_1_NH"]
+                    'noord_holland' => $data["data_0_NH"],
+                    'utrecht'       => $data["data_0_UT"],
+                    'noord_brabant' => $data["data_0_NB"],
+                    'flevoland'     => $data["data_0_FL"],
+                    'limburg'       => $data["data_0_LI"],
+                    'zeeland'       => $data["data_0_ZL"],
+                    'overrijsel'    => $data["data_0_OV"],
+                    'groningen'     => $data["data_0_GR"],
+                    'gelderland'    => $data["data_0_GL"],
+                    'drenthe'       => $data["data_0_DR"],
+                    'friesland'     => $data["data_0_FR"],
+                    'zuid_holland'  => $data["data_0_ZH"],
                 ),
             ];
         }

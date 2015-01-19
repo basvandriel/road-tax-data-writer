@@ -1,12 +1,12 @@
 <?php
 
-    require_once "src/Bas/RoadTaxDataParser/Parser/Parser.php";
-    require_once "src/Bas/RoadTaxDataParser/FormatterDataWriter/FormattedDataWriter.php";
-    require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverterHandler.php";
-    require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverter.php";
-    require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/PassengerCarFormatConverter.php";
-    require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/CampingCarFormatConverter.php";
-    require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/BusFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataParser/Parser/Parser.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatterDataWriter/FormattedDataWriter.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverterHandler.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/PassengerCarFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/CampingCarFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/BusFormatConverter.php";
 
     $root = dirname(__DIR__);
 

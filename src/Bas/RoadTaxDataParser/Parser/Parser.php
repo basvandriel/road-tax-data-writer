@@ -21,7 +21,7 @@
     namespace Bas\RoadTaxDataParser\Parser;
 
     /**
-     * This class is ment to parse data in an array and convert the standard format to a 3D php array
+     * This class is meant to parse data in an array and convert the standard format to a 3D php array
      *
      * @package   Bas\RoadTaxDataParser\Parser
      *
