@@ -14,6 +14,7 @@
     require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/CampingCarFormatConverter.php";
     require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/BusFormatConverter.php";
 
+    //The root folder of the project
     $root = dirname(__DIR__);
 
     $parser = new \Bas\RoadTaxDataWriter\Parser\Parser("{$root}\\var\\data.json");
