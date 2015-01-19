@@ -22,7 +22,7 @@
          *
          * @return mixed
          */
-        public function format(array $resolvedData) {
+        public function convert(array $resolvedData) {
             $formatted = [];
             foreach ($resolvedData as $isRented => $provinces) {
                 foreach ($provinces as $provinceName => $provinceData) {

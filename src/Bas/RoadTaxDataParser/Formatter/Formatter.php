@@ -38,7 +38,7 @@
                      */
                     $instance                       = $reflectedFormatConverterClass->newInstance();
                     $resolvedData                   = $instance->resolveData((array)$this->data);
-                    $convertedFormatData[$fileName] = $instance->format($resolvedData);
+                    $convertedFormatData[$fileName] = $instance->convert($resolvedData);
                 }
             }
             return $convertedFormatData;

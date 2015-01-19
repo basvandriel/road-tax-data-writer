@@ -20,7 +20,7 @@
          *
          * @return array
          */
-        public function format(array $resolvedResolvedData) {
+        public function convert(array $resolvedResolvedData) {
             $formatted = [];
             for ($i = 0; $i < count($resolvedResolvedData); $i++) {
                 $formatted[(int)$resolvedResolvedData[$i][0]] = [
