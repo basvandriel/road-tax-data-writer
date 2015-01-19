@@ -16,12 +16,12 @@
 
     $root = dirname(__DIR__);
 
-    $parser = new \Bas\RoadTaxDataParser\Parser\Parser("{$root}\\var\\data.json");
+    $parser = new \Bas\RoadTaxDataWriter\Parser\Parser("{$root}\\var\\data.json");
     $data   = $parser->parse();
 
-    $formatter        = new \Bas\RoadTaxDataParser\FormatConverter\FormatConverterHandler((array)$data);
+    $formatter        = new \Bas\RoadTaxDataWriter\FormatConverter\FormatConverterHandler((array)$data);
     $formatConverters = $formatter->resolveFormatConverters();
     $formattedData    = $formatter->convertFormat($formatConverters);
 
-    $formattedDataWriter = new \Bas\RoadTaxDataParser\FormatterDataWriter\FormattedDataWriter($formattedData);
+    $formattedDataWriter = new \Bas\RoadTaxDataWriter\FormatterDataWriter\FormattedDataWriter($formattedData);
     $formattedDataWriter->saveFiles("{$root}\\var\\output");

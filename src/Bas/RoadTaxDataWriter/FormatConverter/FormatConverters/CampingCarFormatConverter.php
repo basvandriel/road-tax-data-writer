@@ -7,7 +7,7 @@
     namespace Bas\RoadTaxDataWriter\FormatConverter\FormatConverters;
 
 
-    use Bas\RoadTaxDataParser\FormatConverter\FormatConverter;
+    use Bas\RoadTaxDataWriter\FormatConverter\FormatConverter;
 
     /**
      * Class CampingCarFormatConverter

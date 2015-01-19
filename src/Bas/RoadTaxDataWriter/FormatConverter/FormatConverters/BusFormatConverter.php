@@ -8,7 +8,7 @@
     /**
      * Import the FormatConverter interface for usage
      */
-    use Bas\RoadTaxDataParser\FormatConverter\FormatConverter;
+    use Bas\RoadTaxDataWriter\FormatConverter\FormatConverter;
 
 
     /**
