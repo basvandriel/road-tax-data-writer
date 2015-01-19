@@ -1,11 +1,11 @@
 <?php
 
-    namespace Bas\RoadTaxDataParser\Formatter;
+    namespace Bas\RoadTaxDataParser\FormatConverter;
 
     /**
      * Class FormatConverters
      */
-    class Formatter
+    class FormatConverterHandler
     {
         /**
          * @var array $data The parsed data
@@ -32,7 +32,7 @@
             $convertedFormatData = [];
             foreach ($formatConverterClasses as $fileName => $formatConverterClass) {
                 $reflectedFormatConverterClass = new \ReflectionClass($formatConverterClass);
-                if ($reflectedFormatConverterClass->isInstantiable() && $reflectedFormatConverterClass->isSubclassOf(dirname($this->getNamespace()) . "\\Formatter\\FormatConverter")) {
+                if ($reflectedFormatConverterClass->isInstantiable() && $reflectedFormatConverterClass->isSubclassOf(dirname($this->getNamespace()) . "\\FormatConverter\\FormatConverter")) {
                     /**
                      * @type FormatConverter $instance
                      */
@@ -63,13 +63,16 @@
          */
         public function resolveFormatConverters() {
             $formatConverterClasses = [];
-            $inputDirectory         = __DIR__ . "\\..\\Formatter\\FormatConverters";
+            $inputDirectory         = __DIR__ . "\\..\\FormatConverter\\FormatConverters";
             foreach (new \DirectoryIterator($inputDirectory) as $file) {
-                if ($file->isDot()) {
+                if ($file->isDot() || $file->isDir()) {
                     continue;
                 }
-                $formatConverterClassName                                           = dirname($this->getNamespace()) . "\\Formatter\\FormatConverters\\" . $file->getBasename(".php");
-                $formatConverterClasses[$file->getBasename("FormatConverters.php")] = $formatConverterClassName;
+                $fileName                          = str_replace("FormatConverter",
+                                                                 "Data",
+                                                                 $file->getBasename("FormatConverters.php"));
+                $formatConverterClassName          = dirname($this->getNamespace()) . "\\FormatConverter\\FormatConverters\\" . $file->getBasename(".php");
+                $formatConverterClasses[$fileName] = $formatConverterClassName;
             }
             return $formatConverterClasses;
         }

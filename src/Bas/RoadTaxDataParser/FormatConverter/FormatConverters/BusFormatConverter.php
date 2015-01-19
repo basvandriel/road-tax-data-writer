@@ -3,9 +3,9 @@
     /**
      *
      */
-    namespace Bas\RoadTaxDataParser\Formatter\FormatConverters;
+    namespace Bas\RoadTaxDataParser\FormatConverter\FormatConverters;
 
-    use Bas\RoadTaxDataParser\Formatter\FormatConverter;
+    use Bas\RoadTaxDataParser\FormatConverter\FormatConverter;
 
 
     /**

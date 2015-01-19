@@ -2,18 +2,18 @@
 
     require_once "src/Bas/RoadTaxDataParser/Parser/Parser.php";
     require_once "src/Bas/RoadTaxDataParser/FormatterDataWriter/FormattedDataWriter.php";
-    require_once "src/Bas/RoadTaxDataParser/Formatter/Formatter.php";
-    require_once "src/Bas/RoadTaxDataParser/Formatter/FormatConverter.php";
-    require_once "src/Bas/RoadTaxDataParser/Formatter/FormatConverters/PassengerCarFormatConverter.php";
-    require_once "src/Bas/RoadTaxDataParser/Formatter/FormatConverters/CampingCarFormatConverter.php";
-    require_once "src/Bas/RoadTaxDataParser/Formatter/FormatConverters/BusFormatConverter.php";
+    require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverterHandler.php";
+    require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverter.php";
+    require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/PassengerCarFormatConverter.php";
+    require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/CampingCarFormatConverter.php";
+    require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/BusFormatConverter.php";
 
     $root = __DIR__;
 
     $parser = new \Bas\RoadTaxDataParser\Parser\Parser("{$root}\\var\\data.json");
     $data   = $parser->parse();
 
-    $formatter        = new \Bas\RoadTaxDataParser\Formatter\Formatter((array)$data);
+    $formatter        = new \Bas\RoadTaxDataParser\FormatConverter\FormatConverterHandler((array) $data);
     $formatConverters = $formatter->resolveFormatConverters();
     $formattedData    = $formatter->convertFormat($formatConverters);
 
