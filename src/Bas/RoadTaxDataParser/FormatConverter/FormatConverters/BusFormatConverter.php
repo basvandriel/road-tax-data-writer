@@ -5,6 +5,9 @@
      */
     namespace Bas\RoadTaxDataParser\FormatConverter\FormatConverters;
 
+    /**
+     * Import the FormatConverter interface for usage
+     */
     use Bas\RoadTaxDataParser\FormatConverter\FormatConverter;
 
 
@@ -16,19 +19,19 @@
     class BusFormatConverter implements FormatConverter
     {
         /**
-         * @param array $resolvedResolvedData
+         * @param array $resolvedData
          *
          * @return array
          */
-        public function convert(array $resolvedResolvedData) {
-            $formatted = [];
-            for ($i = 0; $i < count($resolvedResolvedData); $i++) {
-                $formatted[(int)$resolvedResolvedData[$i][0]] = [
-                    'quarterly' => (int)$resolvedResolvedData[$i][1],
-                    'yearly'    => (int)$resolvedResolvedData[$i][2]
+        public function convert(array $resolvedData) {
+            $convertedFormatData = [];
+            for ($resolvedDataIndex = 0; $resolvedDataIndex < count($resolvedData); $resolvedDataIndex++) {
+                $convertedFormatData[(int)$resolvedData[$resolvedDataIndex][0]] = [
+                    'quarterly' => (int)$resolvedData[$resolvedDataIndex][1],
+                    'yearly'    => (int)$resolvedData[$resolvedDataIndex][2]
                 ];
             }
-            return $formatted;
+            return $convertedFormatData;
         }
 
         /**
