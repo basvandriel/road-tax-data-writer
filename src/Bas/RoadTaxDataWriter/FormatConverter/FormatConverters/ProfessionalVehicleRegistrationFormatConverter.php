@@ -3,12 +3,12 @@
      *
      */
 
-    namespace Bas\RoadTaxDataParser\FormatConverter\FormatConverters;
+    namespace Bas\RoadTaxDataWriter\FormatConverter\FormatConverters;
 
 
-    use Bas\RoadTaxDataParser\FormatConverter\FormatConverter;
+    use Bas\RoadTaxDataWriter\FormatConverter\FormatConverter;
 
-    class DrivingStoreVehicleFormatConverter implements FormatConverter
+    class ProfessionalVehicleRegistrationFormatConverter implements FormatConverter
     {
 
         /**
@@ -23,10 +23,24 @@
          */
         public function convert(array $resolvedData) {
             $convertedFormatData = [];
+            $provinces           = [
+                'NH' => 'noord_holland',
+                'UT' => "utrecht",
+                'NB' => 'noord_brabant',
+                'FL' => 'flevoland',
+                'LI' => 'limburg',
+                'ZL' => 'zeeland',
+                'OV' => 'overijssel',
+                'GR' => 'groningen',
+                'GL' => 'gelderland',
+                'DR' => 'drenthe',
+                'FR' => 'friesland',
+                'ZH' => 'zuid_holland',
+            ];
             for ($i = 0; $i < count($resolvedData); $i++) {
-                $convertedFormatData[(int)$resolvedData[$i][0]] = [
+                $convertedFormatData[(string)$provinces[$resolvedData[$i][0]]] = [
                     'quarterly' => (int)$resolvedData[$i][1],
-                    'yearly'    => (int)$resolvedData[$i][2]
+                    'yearly'    => (int)$resolvedData[$i][2],
                 ];
             }
             return $convertedFormatData;
@@ -41,6 +55,6 @@
          *                       resolvedData-map
          */
         public function resolveData(array $data) {
-            return $data["dataWinkelwagen"];
+            return $data["dataBV"];
         }
     }

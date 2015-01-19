@@ -3,19 +3,19 @@
      *
      */
 
-    namespace Bas\RoadTaxDataParser\FormatConverter\FormatConverters;
+    namespace Bas\RoadTaxDataWriter\FormatConverter\FormatConverters;
 
 
-    use Bas\RoadTaxDataParser\FormatConverter\FormatConverter;
+    use Bas\RoadTaxDataWriter\FormatConverter\FormatConverter;
 
-    class DeliveryVanCommercialFormatConverter implements FormatConverter
+    class DeliveryVanDisabledFormatConverter implements FormatConverter
     {
 
         /**
          * Converts the format for the inputted (resolved) resolvedData for the specific vehicle type
          *
-         * @param $resolvedData         array The resolved resolvedData The resolvedData resolved for this vehicle type
-         *                              as an single array or resolvedData-map which is getting formatted
+         * @param $resolvedData array The resolved resolvedData The resolvedData resolved for this vehicle type as an
+         *                      single array or resolvedData-map which is getting formatted
          *
          * @throws \HttpRequestException When it cant find the resolvedData
          *
@@ -41,6 +41,6 @@
          *                       resolvedData-map
          */
         public function resolveData(array $data) {
-            return $data["dataBAZ"];
+            return $data["dataBAI"];
         }
     }

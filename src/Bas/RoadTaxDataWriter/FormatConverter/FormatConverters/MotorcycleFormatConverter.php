@@ -1,21 +1,17 @@
 <?php
-    /**
-     *
-     */
-
-    namespace Bas\RoadTaxDataParser\FormatConverter\FormatConverters;
+    namespace Bas\RoadTaxDataWriter\FormatConverter\FormatConverters;
 
 
-    use Bas\RoadTaxDataParser\FormatConverter\FormatConverter;
+    use Bas\RoadTaxDataWriter\FormatConverter\FormatConverter;
 
-    class DeliveryVanPassengerFormatConverter implements FormatConverter
+    class MotorcycleFormatConverter implements FormatConverter
     {
 
         /**
          * Converts the format for the inputted (resolved) resolvedData for the specific vehicle type
          *
-         * @param $resolvedData         array The resolved resolvedData The resolvedData resolved for this vehicle type
-         *                              as an single array or resolvedData-map which is getting formatted
+         * @param $resolvedData array The resolved resolvedData The resolvedData resolved for this vehicle type as an
+         *                      single array or resolvedData-map which is getting formatted
          *
          * @throws \HttpRequestException When it cant find the resolvedData
          *
@@ -24,11 +20,10 @@
         public function convert(array $resolvedData) {
             $convertedFormatData = [];
             for ($i = 0; $i < count($resolvedData); $i++) {
-                $convertedFormatData[(string)$resolvedData[$i][0]] = [
-                    'benzine'          => (int)$resolvedData[$i][1],
-                    'diesel'           => (int)$resolvedData[$i][2],
-                    'lpg3_natural_gas' => (int)$resolvedData[$i][3],
-                    'lpg_others'       => (int)$resolvedData[$i][4]
+                $provinceName                       = strtolower(str_replace("-", "_", (string)$resolvedData[$i][0]));
+                $convertedFormatData[$provinceName] = [
+                    'quarterly' => (int)$resolvedData[$i][1],
+                    'yearly'    => (int)$resolvedData[$i][2]
                 ];
             }
             return $convertedFormatData;
@@ -43,6 +38,6 @@
          *                       resolvedData-map
          */
         public function resolveData(array $data) {
-            return $data["dataBAP"];
+            return $data["dataMotor"];
         }
     }

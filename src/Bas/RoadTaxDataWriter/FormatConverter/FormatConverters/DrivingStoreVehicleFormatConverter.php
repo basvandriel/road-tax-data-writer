@@ -1,17 +1,21 @@
 <?php
-    namespace Bas\RoadTaxDataParser\FormatConverter\FormatConverters;
+    /**
+     *
+     */
+
+    namespace Bas\RoadTaxDataWriter\FormatConverter\FormatConverters;
 
 
-    use Bas\RoadTaxDataParser\FormatConverter\FormatConverter;
+    use Bas\RoadTaxDataWriter\FormatConverter\FormatConverter;
 
-    class MotorcycleFormatConverter implements FormatConverter
+    class DrivingStoreVehicleFormatConverter implements FormatConverter
     {
 
         /**
          * Converts the format for the inputted (resolved) resolvedData for the specific vehicle type
          *
-         * @param $resolvedData array The resolved resolvedData The resolvedData resolved for this vehicle type as an
-         *                      single array or resolvedData-map which is getting formatted
+         * @param $resolvedData         array The resolved resolvedData The resolvedData resolved for this vehicle type
+         *                              as an single array or resolvedData-map which is getting formatted
          *
          * @throws \HttpRequestException When it cant find the resolvedData
          *
@@ -20,8 +24,7 @@
         public function convert(array $resolvedData) {
             $convertedFormatData = [];
             for ($i = 0; $i < count($resolvedData); $i++) {
-                $provinceName                       = strtolower(str_replace("-", "_", (string)$resolvedData[$i][0]));
-                $convertedFormatData[$provinceName] = [
+                $convertedFormatData[(int)$resolvedData[$i][0]] = [
                     'quarterly' => (int)$resolvedData[$i][1],
                     'yearly'    => (int)$resolvedData[$i][2]
                 ];
@@ -38,6 +41,6 @@
          *                       resolvedData-map
          */
         public function resolveData(array $data) {
-            return $data["dataMotor"];
+            return $data["dataWinkelwagen"];
         }
     }

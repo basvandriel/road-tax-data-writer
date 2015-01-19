@@ -1,6 +1,6 @@
 <?php
 
-    namespace Bas\RoadTaxDataParser\FormatConverter;
+    namespace Bas\RoadTaxDataWriter\FormatConverter;
 
     /**
      * All the utility methods for format converter classes.

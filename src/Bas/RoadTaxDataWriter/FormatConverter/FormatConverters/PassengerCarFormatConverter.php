@@ -1,8 +1,8 @@
 <?php
 
-    namespace Bas\RoadTaxDataParser\FormatConverter\FormatConverters;
+    namespace Bas\RoadTaxDataWriter\FormatConverter\FormatConverters;
 
-    use Bas\RoadTaxDataParser\FormatConverter\FormatConverter;
+    use Bas\RoadTaxDataWriter\FormatConverter\FormatConverter;
 
     class PassengerCarFormatConverter implements FormatConverter
     {

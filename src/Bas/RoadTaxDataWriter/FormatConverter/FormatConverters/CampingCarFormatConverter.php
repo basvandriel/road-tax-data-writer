@@ -4,7 +4,7 @@
     /**
      *
      */
-    namespace Bas\RoadTaxDataParser\FormatConverter\FormatConverters;
+    namespace Bas\RoadTaxDataWriter\FormatConverter\FormatConverters;
 
 
     use Bas\RoadTaxDataParser\FormatConverter\FormatConverter;
@@ -12,7 +12,7 @@
     /**
      * Class CampingCarFormatConverter
      *
-     * @package Bas\RoadTaxDataParser\FormatConverters\FormatConverters
+     * @package Bas\RoadTaxDataWriter\FormatConverters\FormatConverters
      */
     class CampingCarFormatConverter implements FormatConverter
     {

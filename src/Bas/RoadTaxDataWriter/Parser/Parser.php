@@ -1,6 +1,5 @@
 <?php
 
-
     /*!
      * The MIT License (MIT)
      *
@@ -19,39 +18,46 @@
      * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
      * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
      */
-    namespace Bas\RoadTaxDataParser\FormatterDataWriter;
-
+    namespace Bas\RoadTaxDataWriter\Parser;
 
     /**
-     * Writes the formatted data per vehicle type to php files in array (< 5.4) format
+     * This class is meant to parse data in an array and convert the standard format to a 3D php array
      *
-     * @package Bas\RoadTaxDataParser\FormattedDataWriter
+     * @package   Bas\RoadTaxDataWriter\Parser
+     *
+     * @author    Bas van Driel <basvandriel94@gmail.com>
+     * @copyright 2014 Bas van Driel
+     * @license   MIT
      */
-    class FormattedDataWriter
+    class Parser
     {
-        /**
-         * @var $formattedData array The formatted data with it's file name
-         */
-        private $formattedData;
 
         /**
-         * Instantiates a new FormattedDataWriter
-         *
-         * @param $formattedData   array The formatted data with it's file name
+         * @var string $uri The location of the data file
          */
-        public function __construct(array $formattedData) {
-            $this->formattedData = $formattedData;
+        private $uri;
+
+        /**
+         * Instantiates a new data parser
+         *
+         * @param string $uri The location of the data file
+         */
+        public function __construct($uri) {
+            $this->uri = $uri;
         }
 
         /**
-         * Saves the formatted data to the specified output directory in it's given filename
+         * Parses the data from the inputted JSON file into an array and then converts the standard format.
          *
-         * @param $outputDirectory string The location where the files are getting stored
+         * @return array The parsed and converted data in array format
          */
-        public function saveFiles($outputDirectory) {
-            foreach ($this->formattedData as $fileName => $formattedDataRow) {
-                $data = var_export($formattedDataRow, true);
-                file_put_contents("{$outputDirectory}\\{$fileName}", "<?php\n\n return {$data};");
+        public function parse() {
+            $data = json_decode(file_get_contents($this->uri));
+            foreach ($data as $vehicleTypeKey => $values) {
+                for ($i = 0; $i < count($values); $i++) {
+                    $data->{$vehicleTypeKey}[$i] = explode("#", $values[$i]);
+                }
             }
+            return $data;
         }
     }

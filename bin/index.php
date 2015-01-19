@@ -1,18 +1,18 @@
 <?php
 
-    require_once "../src/Bas/RoadTaxDataParser/Parser/Parser.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatterDataWriter/FormattedDataWriter.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverterHandler.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/DeliveryVanDisabledFormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/DeliveryVanPassengerFormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/DeliveryVanCommercialFormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/ProfessionalVehicleRegistrationFormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/DrivingStoreVehicleFormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/MotorcycleFormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/PassengerCarFormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/CampingCarFormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/BusFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/Parser/Parser.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatterDataWriter/FormattedDataWriter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverterHandler.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/DeliveryVanDisabledFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/DeliveryVanPassengerFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/DeliveryVanCommercialFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/ProfessionalVehicleRegistrationFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/DrivingStoreVehicleFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/MotorcycleFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/PassengerCarFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/CampingCarFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/BusFormatConverter.php";
 
     $root = dirname(__DIR__);
 

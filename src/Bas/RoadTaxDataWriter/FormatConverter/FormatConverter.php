@@ -19,12 +19,12 @@
      * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
      * DEALINGS IN THE SOFTWARE.
      */
-    namespace Bas\RoadTaxDataParser\FormatConverter;
+    namespace Bas\RoadTaxDataWriter\FormatConverter;
 
     /**
      * Implement this interface to create a format converter class
      *
-     * @package Bas\RoadTaxDataParser\FormatConverter
+     * @package Bas\RoadTaxDataWriter\FormatConverter
      */
     interface FormatConverter
     {
