@@ -1,8 +1,8 @@
 <?php
-class Failure extends PHPUnit_Framework_TestCase
-{
-    protected function runTest()
+
+    class Failure extends PHPUnit_Framework_TestCase
     {
-        $this->fail();
+        protected function runTest() {
+            $this->fail();
+        }
     }
-}

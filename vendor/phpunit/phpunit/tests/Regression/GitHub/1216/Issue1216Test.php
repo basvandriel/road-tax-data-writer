@@ -1,8 +1,8 @@
 <?php
-class Issue1216Test extends PHPUnit_Framework_TestCase
-{
-    public function testConfigAvailableInBootstrap()
+
+    class Issue1216Test extends PHPUnit_Framework_TestCase
     {
-        $this->assertTrue($_ENV['configAvailableInBootstrap']);
+        public function testConfigAvailableInBootstrap() {
+            $this->assertTrue($_ENV['configAvailableInBootstrap']);
+        }
     }
-}

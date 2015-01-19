@@ -1,13 +1,12 @@
 <?php
-class MethodCallbackByReference
-{
-    public function bar(&$a, &$b, $c)
-    {
-        Legacy::bar($a, $b, $c);
-    }
 
-    public function callback(&$a, &$b, $c)
+    class MethodCallbackByReference
     {
-        $b = 1;
+        public function bar(&$a, &$b, $c) {
+            Legacy::bar($a, $b, $c);
+        }
+
+        public function callback(&$a, &$b, $c) {
+            $b = 1;
+        }
     }
-}

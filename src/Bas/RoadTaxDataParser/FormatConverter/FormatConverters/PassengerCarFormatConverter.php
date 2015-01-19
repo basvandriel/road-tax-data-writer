@@ -8,13 +8,13 @@
     {
 
         /**
-         * @param array $data The data which is getting formatted
+         * @param array $resolvedData The resolvedData which is getting formatted
          *
          * @return mixed
          */
-        public function convert(array $data) {
+        public function convert(array $resolvedData) {
             $formatted = [];
-            foreach ($data as $provinceName => $provinceData) {
+            foreach ($resolvedData as $provinceName => $provinceData) {
                 $provinceDataRows = count($provinceData);
                 for ($provinceDataRowIndex = 0; $provinceDataRowIndex < $provinceDataRows; $provinceDataRowIndex++) {
                     $formatted[$provinceName][$provinceData[$provinceDataRowIndex][0]] = array(
@@ -35,10 +35,18 @@
          */
         public function resolveData(array $data) {
             return array(
-                'zeeland'       => $data['dataZL'],
-                'noord_holland' => $data['dataNH'],
-                'noord_brabant' => $data['dataNB'],
-                'limburg'       => $data['dataLI'],
+                'noord_holland' => $data["dataNH"],
+                'utrecht'       => $data["dataUT"],
+                'noord_brabant' => $data["dataNB"],
+                'flevoland'     => $data["dataFL"],
+                'limburg'       => $data["dataLI"],
+                'zeeland'       => $data["dataZL"],
+                'overrijsel'    => $data["dataOV"],
+                'groningen'     => $data["dataGR"],
+                'gelderland'    => $data["dataGL"],
+                'drenthe'       => $data["dataDR"],
+                'friesland'     => $data["dataFR"],
+                'zuid_holland'  => $data["dataZH"],
             );
         }
     }

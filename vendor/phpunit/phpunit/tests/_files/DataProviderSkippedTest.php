@@ -1,37 +1,50 @@
 <?php
-class DataProviderSkippedTest extends PHPUnit_Framework_TestCase
-{
-    /**
-     * @dataProvider skippedTestProviderMethod
-     */
-    public function testSkipped($a, $b, $c)
-    {
-        $this->assertTrue(true);
-    }
 
-    /**
-     * @dataProvider providerMethod
-     */
-    public function testAdd($a, $b, $c)
+    class DataProviderSkippedTest extends PHPUnit_Framework_TestCase
     {
-        $this->assertEquals($c, $a + $b);
-    }
+        /**
+         * @dataProvider skippedTestProviderMethod
+         */
+        public function testSkipped($a, $b, $c) {
+            $this->assertTrue(true);
+        }
 
-    public function skippedTestProviderMethod()
-    {
-        $this->markTestSkipped("skipped");
+        /**
+         * @dataProvider providerMethod
+         */
+        public function testAdd($a, $b, $c) {
+            $this->assertEquals($c, $a + $b);
+        }
 
-        return array(
-          array(0, 0, 0),
-          array(0, 1, 1),
-        );
-    }
+        public function skippedTestProviderMethod() {
+            $this->markTestSkipped("skipped");
 
-    public static function providerMethod()
-    {
-        return array(
-          array(0, 0, 0),
-          array(0, 1, 1),
-        );
+            return array(
+                array(
+                    0,
+                    0,
+                    0
+                ),
+                array(
+                    0,
+                    1,
+                    1
+                ),
+            );
+        }
+
+        public static function providerMethod() {
+            return array(
+                array(
+                    0,
+                    0,
+                    0
+                ),
+                array(
+                    0,
+                    1,
+                    1
+                ),
+            );
+        }
     }
-}

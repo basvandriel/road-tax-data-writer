@@ -1,10 +1,10 @@
 <?php
-class WasRun extends PHPUnit_Framework_TestCase
-{
-    public $wasRun = false;
 
-    protected function runTest()
+    class WasRun extends PHPUnit_Framework_TestCase
     {
-        $this->wasRun = true;
+        public $wasRun = false;
+
+        protected function runTest() {
+            $this->wasRun = true;
+        }
     }
-}

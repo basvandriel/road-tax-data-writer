@@ -5,6 +5,10 @@
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverterHandler.php";
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverter.php";
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/DeliveryVanDisabledFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/DeliveryVanPassengerFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/DeliveryVanCommercialFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/ProfessionalVehicleRegistrationFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/DrivingStoreVehicleFormatConverter.php";
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/MotorcycleFormatConverter.php";
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/PassengerCarFormatConverter.php";
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/CampingCarFormatConverter.php";
@@ -20,4 +24,4 @@
     $formattedData    = $formatter->convertFormat($formatConverters);
 
     $formattedDataWriter = new \Bas\RoadTaxDataParser\FormatterDataWriter\FormattedDataWriter($formattedData);
-    $formattedDataWriter->saveFiles("{$root}\\var");
+    $formattedDataWriter->saveFiles("{$root}\\var\\output");

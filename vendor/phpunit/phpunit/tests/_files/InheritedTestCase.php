@@ -1,7 +1,7 @@
 <?php
-class InheritedTestCase extends OneTestCase
-{
-    public function test2()
+
+    class InheritedTestCase extends OneTestCase
     {
+        public function test2() {
+        }
     }
-}

@@ -18,13 +18,13 @@
     {
 
         /**
-         * @param array $data The data which is getting formatted
+         * @param array $resolvedData The resolvedData which is getting formatted
          *
          * @return mixed
          */
-        public function convert(array $data) {
+        public function convert(array $resolvedData) {
             $formatted = [];
-            foreach ($data as $isRented => $provinces) {
+            foreach ($resolvedData as $isRented => $provinces) {
                 foreach ($provinces as $provinceName => $provinceData) {
                     $provinceDataRows = count($provinceData);
                     for ($provinceDataIndex = 0; $provinceDataIndex < $provinceDataRows; $provinceDataIndex++) {

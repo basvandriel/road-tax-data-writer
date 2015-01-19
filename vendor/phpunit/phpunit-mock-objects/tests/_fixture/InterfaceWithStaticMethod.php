@@ -1,6 +1,7 @@
 <?php
-interface InterfaceWithStaticMethod
-{
-    public static function staticMethod();
-}
+
+    interface InterfaceWithStaticMethod
+    {
+        public static function staticMethod();
+    }
 

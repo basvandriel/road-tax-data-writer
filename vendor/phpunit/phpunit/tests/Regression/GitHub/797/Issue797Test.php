@@ -1,10 +1,10 @@
 <?php
-class Issue797Test extends PHPUnit_Framework_TestCase
-{
-    protected $preserveGlobalState = false;
 
-    public function testBootstrapPhpIsExecutedInIsolation()
+    class Issue797Test extends PHPUnit_Framework_TestCase
     {
-        $this->assertEquals(GITHUB_ISSUE, 797);
+        protected $preserveGlobalState = false;
+
+        public function testBootstrapPhpIsExecutedInIsolation() {
+            $this->assertEquals(GITHUB_ISSUE, 797);
+        }
     }
-}

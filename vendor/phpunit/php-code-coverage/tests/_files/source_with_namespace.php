@@ -1,20 +1,20 @@
 <?php
-namespace bar\baz;
+    namespace bar\baz;
 
-/**
- * Represents foo.
- */
-class source_with_namespace
-{
-}
+    /**
+     * Represents foo.
+     */
+    class source_with_namespace
+    {
+    }
 
-/**
- * @param mixed $bar
- */
-function &foo($bar)
-{
-    $baz = function () {};
-    $a   = true ? true : false;
-    $b = "{$a}";
-    $c = "${b}";
-}
+    /**
+     * @param mixed $bar
+     */
+    function &foo($bar) {
+        $baz = function () {
+        };
+        $a   = true ? true : false;
+        $b   = "{$a}";
+        $c   = "${b}";
+    }

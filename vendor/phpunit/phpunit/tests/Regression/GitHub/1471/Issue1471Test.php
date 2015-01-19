@@ -1,13 +1,13 @@
 <?php
-class Issue1471Test extends PHPUnit_Framework_TestCase
-{
-    public function testFailure()
+
+    class Issue1471Test extends PHPUnit_Framework_TestCase
     {
-        $this->expectOutputString('*');
+        public function testFailure() {
+            $this->expectOutputString('*');
 
-        print "*";
+            print "*";
 
-        $this->assertTrue(false);
+            $this->assertTrue(false);
+        }
     }
-}
 

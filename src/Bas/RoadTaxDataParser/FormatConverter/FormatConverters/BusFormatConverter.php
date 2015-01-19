@@ -16,16 +16,16 @@
     class BusFormatConverter implements FormatConverter
     {
         /**
-         * @param array $resolvedData
+         * @param array $resolvedResolvedData
          *
          * @return array
          */
-        public function convert(array $resolvedData) {
+        public function convert(array $resolvedResolvedData) {
             $formatted = [];
-            for ($i = 0; $i < count($resolvedData); $i++) {
-                $formatted[(int)$resolvedData[$i][0]] = [
-                    'quarterly' => (int)$resolvedData[$i][1],
-                    'yearly'    => (int)$resolvedData[$i][2]
+            for ($i = 0; $i < count($resolvedResolvedData); $i++) {
+                $formatted[(int)$resolvedResolvedData[$i][0]] = [
+                    'quarterly' => (int)$resolvedResolvedData[$i][1],
+                    'yearly'    => (int)$resolvedResolvedData[$i][2]
                 ];
             }
             return $formatted;

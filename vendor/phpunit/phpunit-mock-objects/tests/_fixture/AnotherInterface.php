@@ -1,5 +1,6 @@
 <?php
-interface AnotherInterface
-{
-    public function doSomethingElse();
-}
+
+    interface AnotherInterface
+    {
+        public function doSomethingElse();
+    }

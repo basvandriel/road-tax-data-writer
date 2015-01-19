@@ -5,7 +5,7 @@
          backupGlobals="false"
          colors="true"
          bootstrap="vendor/autoload.php"
->
+        >
     <php>
         <!-- php -r 'echo -1 & ~E_USER_DEPRECATED;' -->
         <ini name="error_reporting" value="-16385"/>

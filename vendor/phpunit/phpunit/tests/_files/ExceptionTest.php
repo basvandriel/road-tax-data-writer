@@ -1,139 +1,126 @@
 <?php
-class ExceptionTest extends PHPUnit_Framework_TestCase
-{
-    /**
-     * Exception message
-     *
-     * @var string
-     */
-    const ERROR_MESSAGE = 'Exception message';
 
-    /**
-     * Exception message
-     *
-     * @var string
-     */
-    const ERROR_MESSAGE_REGEX = '#regex#';
-
-    /**
-     * Exception code
-     *
-     * @var integer
-     */
-    const ERROR_CODE = 500;
-
-    /**
-     * @expectedException FooBarBaz
-     */
-    public function testOne()
+    class ExceptionTest extends PHPUnit_Framework_TestCase
     {
-    }
+        /**
+         * Exception message
+         *
+         * @var string
+         */
+        const ERROR_MESSAGE = 'Exception message';
 
-    /**
-     * @expectedException Foo_Bar_Baz
-     */
-    public function testTwo()
-    {
-    }
+        /**
+         * Exception message
+         *
+         * @var string
+         */
+        const ERROR_MESSAGE_REGEX = '#regex#';
 
-    /**
-     * @expectedException Foo\Bar\Baz
-     */
-    public function testThree()
-    {
-    }
+        /**
+         * Exception code
+         *
+         * @var integer
+         */
+        const ERROR_CODE = 500;
 
-    /**
-     * @expectedException ほげ
-     */
-    public function testFour()
-    {
-    }
+        /**
+         * @expectedException FooBarBaz
+         */
+        public function testOne() {
+        }
 
-    /**
-     * @expectedException Class Message 1234
-     */
-    public function testFive()
-    {
-    }
+        /**
+         * @expectedException Foo_Bar_Baz
+         */
+        public function testTwo() {
+        }
 
-    /**
-     * @expectedException Class
-     * @expectedExceptionMessage Message
-     * @expectedExceptionCode 1234
-     */
-    public function testSix()
-    {
-    }
+        /**
+         * @expectedException Foo\Bar\Baz
+         */
+        public function testThree() {
+        }
 
-    /**
-     * @expectedException Class
-     * @expectedExceptionMessage Message
-     * @expectedExceptionCode ExceptionCode
-     */
-    public function testSeven()
-    {
-    }
+        /**
+         * @expectedException ほげ
+         */
+        public function testFour() {
+        }
 
-    /**
-     * @expectedException Class
-     * @expectedExceptionMessage Message
-     * @expectedExceptionCode 0
-     */
-    public function testEight()
-    {
-    }
+        /**
+         * @expectedException Class Message 1234
+         */
+        public function testFive() {
+        }
 
-    /**
-     * @expectedException Class
-     * @expectedExceptionMessage ExceptionTest::ERROR_MESSAGE
-     * @expectedExceptionCode ExceptionTest::ERROR_CODE
-     */
-    public function testNine()
-    {
-    }
+        /**
+         * @expectedException Class
+         * @expectedExceptionMessage Message
+         * @expectedExceptionCode    1234
+         */
+        public function testSix() {
+        }
 
-    /** @expectedException Class */
-    public function testSingleLine()
-    {
-    }
+        /**
+         * @expectedException Class
+         * @expectedExceptionMessage Message
+         * @expectedExceptionCode    ExceptionCode
+         */
+        public function testSeven() {
+        }
 
-    /**
-     * @expectedException Class
-     * @expectedExceptionCode ExceptionTest::UNKNOWN_CODE_CONSTANT
-     * @expectedExceptionMessage ExceptionTest::UNKNOWN_MESSAGE_CONSTANT
-     */
-    public function testUnknownConstants()
-    {
-    }
+        /**
+         * @expectedException Class
+         * @expectedExceptionMessage Message
+         * @expectedExceptionCode    0
+         */
+        public function testEight() {
+        }
 
-    /**
-     * @expectedException Class
-     * @expectedExceptionCode 1234
-     * @expectedExceptionMessage Message
-     * @expectedExceptionMessageRegExp #regex#
-     */
-    public function testWithRegexMessage()
-    {
-    }
+        /**
+         * @expectedException Class
+         * @expectedExceptionMessage ExceptionTest::ERROR_MESSAGE
+         * @expectedExceptionCode    ExceptionTest::ERROR_CODE
+         */
+        public function testNine() {
+        }
 
-    /**
-     * @expectedException Class
-     * @expectedExceptionCode 1234
-     * @expectedExceptionMessage Message
-     * @expectedExceptionMessageRegExp ExceptionTest::ERROR_MESSAGE_REGEX
-     */
-    public function testWithRegexMessageFromClassConstant()
-    {
-    }
+        /** @expectedException Class */
+        public function testSingleLine() {
+        }
 
-    /**
-     * @expectedException Class
-     * @expectedExceptionCode 1234
-     * @expectedExceptionMessage Message
-     * @expectedExceptionMessageRegExp ExceptionTest::UNKNOWN_MESSAGE_REGEX_CONSTANT
-     */
-    public function testWithUnknowRegexMessageFromClassConstant()
-    {
+        /**
+         * @expectedException Class
+         * @expectedExceptionCode    ExceptionTest::UNKNOWN_CODE_CONSTANT
+         * @expectedExceptionMessage ExceptionTest::UNKNOWN_MESSAGE_CONSTANT
+         */
+        public function testUnknownConstants() {
+        }
+
+        /**
+         * @expectedException Class
+         * @expectedExceptionCode    1234
+         * @expectedExceptionMessage Message
+         * @expectedExceptionMessageRegExp #regex#
+         */
+        public function testWithRegexMessage() {
+        }
+
+        /**
+         * @expectedException Class
+         * @expectedExceptionCode          1234
+         * @expectedExceptionMessage       Message
+         * @expectedExceptionMessageRegExp ExceptionTest::ERROR_MESSAGE_REGEX
+         */
+        public function testWithRegexMessageFromClassConstant() {
+        }
+
+        /**
+         * @expectedException Class
+         * @expectedExceptionCode          1234
+         * @expectedExceptionMessage       Message
+         * @expectedExceptionMessageRegExp ExceptionTest::UNKNOWN_MESSAGE_REGEX_CONSTANT
+         */
+        public function testWithUnknowRegexMessageFromClassConstant() {
+        }
     }
-}

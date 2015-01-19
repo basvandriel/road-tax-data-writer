@@ -1,8 +1,8 @@
 <?php
-class ThrowExceptionTestCase extends PHPUnit_Framework_TestCase
-{
-    public function test()
+
+    class ThrowExceptionTestCase extends PHPUnit_Framework_TestCase
     {
-        throw new RuntimeException('A runtime error occurred');
+        public function test() {
+            throw new RuntimeException('A runtime error occurred');
+        }
     }
-}

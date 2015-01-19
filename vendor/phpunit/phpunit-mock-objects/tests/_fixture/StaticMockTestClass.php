@@ -1,12 +1,11 @@
 <?php
-class StaticMockTestClass
-{
-    public static function doSomething()
-    {
-    }
 
-    public static function doSomethingElse()
+    class StaticMockTestClass
     {
-        return static::doSomething();
+        public static function doSomething() {
+        }
+
+        public static function doSomethingElse() {
+            return static::doSomething();
+        }
     }
-}
