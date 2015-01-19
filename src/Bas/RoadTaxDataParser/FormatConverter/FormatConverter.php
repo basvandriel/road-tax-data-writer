@@ -31,14 +31,14 @@
         /**
          * Converts the format for the inputted (resolved) data for the specific vehicle type
          *
-         * @param $resolvedData array The resolved data The data resolved for this vehicle type as an single array or
+         * @param $data array The resolved data The data resolved for this vehicle type as an single array or
          *                      data-map which is getting formatted
          *
          * @throws \HttpRequestException When it cant find the data
          *
          * @return array The data which it's format has been converted
          */
-        public function convert(array $resolvedData);
+        public function convert(array $data);
 
         /**
          * Resolves the data in a data map or single array and returns it.

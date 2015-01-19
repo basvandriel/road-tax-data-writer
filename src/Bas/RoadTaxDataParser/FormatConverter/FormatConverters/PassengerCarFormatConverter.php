@@ -8,13 +8,13 @@
     {
 
         /**
-         * @param array $resolvedData The data which is getting formatted
+         * @param array $data The data which is getting formatted
          *
          * @return mixed
          */
-        public function convert(array $resolvedData) {
+        public function convert(array $data) {
             $formatted = [];
-            foreach ($resolvedData as $provinceName => $provinceData) {
+            foreach ($data as $provinceName => $provinceData) {
                 $provinceDataRows = count($provinceData);
                 for ($provinceDataRowIndex = 0; $provinceDataRowIndex < $provinceDataRows; $provinceDataRowIndex++) {
                     $formatted[$provinceName][$provinceData[$provinceDataRowIndex][0]] = array(

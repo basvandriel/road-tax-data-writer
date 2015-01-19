@@ -4,6 +4,8 @@
     require_once "../src/Bas/RoadTaxDataParser/FormatterDataWriter/FormattedDataWriter.php";
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverterHandler.php";
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/DeliveryVanDisabledFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/MotorcycleFormatConverter.php";
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/PassengerCarFormatConverter.php";
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/CampingCarFormatConverter.php";
     require_once "../src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/BusFormatConverter.php";
