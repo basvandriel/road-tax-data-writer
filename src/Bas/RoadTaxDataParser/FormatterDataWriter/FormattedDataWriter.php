@@ -23,7 +23,7 @@
 
 
     /**
-     * Writes formatted data to php files in array format
+     * Writes the formatted data per vehicle type to php files in array (< 5.4) format
      *
      * @package Bas\RoadTaxDataParser\FormattedDataWriter
      */
