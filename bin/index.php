@@ -8,12 +8,12 @@
     require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/CampingCarFormatConverter.php";
     require_once "src/Bas/RoadTaxDataParser/FormatConverter/FormatConverters/BusFormatConverter.php";
 
-    $root = __DIR__;
+    $root = dirname(__DIR__);
 
     $parser = new \Bas\RoadTaxDataParser\Parser\Parser("{$root}\\var\\data.json");
     $data   = $parser->parse();
 
-    $formatter        = new \Bas\RoadTaxDataParser\FormatConverter\FormatConverterHandler((array) $data);
+    $formatter        = new \Bas\RoadTaxDataParser\FormatConverter\FormatConverterHandler((array)$data);
     $formatConverters = $formatter->resolveFormatConverters();
     $formattedData    = $formatter->convertFormat($formatConverters);
 

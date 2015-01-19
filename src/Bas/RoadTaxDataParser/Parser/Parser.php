@@ -20,12 +20,14 @@
      */
     namespace Bas\RoadTaxDataParser\Parser;
 
-    use Bas\RoadTaxDataParser\FormaterConverter\FormatConverter;
-
     /**
-     * Class Parser
+     * This class is ment to parse data in an array and convert the standard format to a 3D php array
      *
-     * @package Bas\RoadTaxDataParser\Parser
+     * @package   Bas\RoadTaxDataParser\Parser
+     *
+     * @author    Bas van Driel <basvandriel94@gmail.com>
+     * @copyright 2014 Bas van Driel
+     * @license   MIT
      */
     class Parser
     {
@@ -36,6 +38,7 @@
         private $uri;
 
         /**
+         * Instantiates a new data parser
          *
          * @param string $uri The location of the data file
          */
@@ -43,6 +46,11 @@
             $this->uri = $uri;
         }
 
+        /**
+         * Parses the data from the inputted JSON file into an array and then converts the standard format.
+         *
+         * @return array The parsed and converted data in array format
+         */
         public function parse() {
             $data = json_decode(file_get_contents($this->uri));
             foreach ($data as $vehicleTypeKey => $values) {
@@ -51,70 +59,5 @@
                 }
             }
             return $data;
-        }
-
-        /**
-         * Formats the data based on all located formatter classes
-         *
-         * @param array $formatterClasses Every found formatter class
-         *
-         * @return array The formatted data
-         */
-        public function formatData(array $formatterClasses) {
-            $formattedDataArrays = [];
-            $data = json_decode(file_get_contents($this->uri));
-
-
-            foreach ($data as $vehicleTypeKey => $values) {
-                for ($i = 0; $i < count($values); $i++) {
-                    $data->{$vehicleTypeKey}[$i] = explode("#", $values[$i]);
-                }
-            }
-
-            foreach ($formatterClasses as $fileName => $formatterClass) {
-                $reflectedClass = new \ReflectionClass($formatterClass);
-                if ($reflectedClass->isInstantiable() && $reflectedClass->isSubclassOf(dirname($this->getNamespace()) . "\\FormatConverters\\FormatConverters")) {
-                    /**
-                     * @type FormatConverter $instance
-                     */
-                    $instance                       = $reflectedClass->newInstance();
-                    $resolvedData                   = $instance->resolveData((array)$data);
-                    $formattedDataArrays[$fileName] = $instance->format($resolvedData);
-                }
-            }
-            return $formattedDataArrays;
-        }
-
-        /**
-         * @return string The namespace of this file
-         */
-        private function getNamespace() {
-            return substr($this->getClass(), 0, strrpos($this->getClass(), "\\"));
-        }
-
-        /**
-         * @return string The class name of this class
-         */
-        private function getClass() {
-            return get_class($this);
-        }
-
-        /**
-         * Resolves the locations of the formatter classes
-         *
-         * @return array The locations of the formatter classes with the file name they should use to print out an php
-         *               file
-         */
-        public function locateFormatterClasses() {
-            $inputDirectory = __DIR__ . "\\..\\FormatConverters\\FormatConverters";
-            $formatterClasses = [];
-            foreach (new \DirectoryIterator($inputDirectory) as $file) {
-                if ($file->isDot()) {
-                    continue;
-                }
-                $formatterClassName                                           = dirname($this->getNamespace()) . "\\FormatConverters\\FormatConverters\\" . $file->getBasename(".php");
-                $formatterClasses[$file->getBasename("FormatConverters.php")] = $formatterClassName;
-            }
-            return $formatterClasses;
         }
     }
