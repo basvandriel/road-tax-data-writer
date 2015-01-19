@@ -24,7 +24,10 @@
     /**
      * Implement this interface to create a format converter class
      *
-     * @package Bas\RoadTaxDataWriter\FormatConverter
+     * @author    Bas van Driel <basvandriel94@gmail.com>
+     * @copyright MIT
+     *
+     * @package   Bas\RoadTaxDataWriter\FormatConverter
      */
     interface FormatConverter
     {
