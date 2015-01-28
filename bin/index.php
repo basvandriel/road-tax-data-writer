@@ -4,9 +4,7 @@
     require_once "../src/Bas/RoadTaxDataWriter/FormatterDataWriter/FormattedDataWriter.php";
     require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverterHandler.php";
     require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/DeliveryVanDisabledFormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/DeliveryVanPassengerFormatConverter.php";
-    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/DeliveryVanCommercialFormatConverter.php";
+    require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/DeliveryVanFormatConverter.php";
     require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/ProfessionalVehicleRegistrationFormatConverter.php";
     require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/DrivingStoreVehicleFormatConverter.php";
     require_once "../src/Bas/RoadTaxDataWriter/FormatConverter/FormatConverters/MotorcycleFormatConverter.php";
